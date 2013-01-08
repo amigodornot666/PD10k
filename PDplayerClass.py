@@ -1,37 +1,37 @@
 # PDplayerClass.py
-# second mac OS python file.
-# aMigod666(KyleJRoux)
-import PDuserClass
+# -*- coding: utf-8 *-*
+# by: aMigod666(KyleJRoux)
+#import PDmenu
+#import time
 
-class Player(PDuserClass.User):
-    __rollHistory = dict()
-    playerNameList  = list([None])
-    playerNameDict = {None : 0}
+debug = True
 
-    def __init__(self, name=' '):
-        #super(Player, self).__init__(name)
-        PDuserClass.User.__init__(self)
-        self.__name = name
-        Player.playerNameList.append(self.__name)
-        Player.playerNameDict[Player.playerNameList[Player.counter]] = Player.counter
+class Player(object):
+    _playerCount = 0
+    _playerList = [None]
+    _playerScores = dict()
 
+    def  __init__(self, name=''):
+        Player._playerCount += 1
+        if not (name == ''):
+            self._name = name
+        else:
+            self._name = 'Player #{0}'.format(Player._playerCount)
+        self.playerNumber = Player._playerCount
+        Player._playerList.append(self._name)
+        Player._playerScores[self._name] = 0
+
+        if (debug):
+            print '{0} has joined the game and is player #{1}'.format(self._name, Player._playerCount)
 
     def __str__(self):
-        return 'Hi my name is {0},\nIm the first ever Player!!'.format(self.name)
-
+            return str(self._name)
 
 def main():
-    john = PDuserClass.User('john')
-    ron = PDuserClass.User('Ron')
-    kate = PDuserClass.User()
+    kyle = Player('Kyle')
 
-    for user in [john, ron, kate]:
-        print user
 
-    print 'now players'
 
-    kyle = Player('Kyle Roux')
-    print kyle
 
 if __name__ == "__main__":
     main()

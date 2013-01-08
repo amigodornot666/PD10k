@@ -1,0 +1,4 @@
+class Roll(object):
+    pass
+
+
